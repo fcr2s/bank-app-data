@@ -42,7 +42,7 @@ spring:
         cors-configurations:
           '[/**]':
             allowedOrigins: 
-              - "http://localhost:3306"
+              - "http://mysql.default.svc.cluster.local:3306"
             allowedMethods:
               - GET
               - POST
