@@ -20,12 +20,12 @@ spring:
           uri: lb://registro-service
           predicates:
             - Path=/registro/**
-
       globalcors:
         cors-configurations:
           '[/**]':
-            allowedOrigins:
-              - "*"
+            allowedOriginPatterns:
+              - "http://127.0.0.1:*"
+              - "http://localhost:*"
             allowedMethods:
               - GET
               - POST
@@ -35,3 +35,4 @@ spring:
             allowedHeaders:
               - "*"
             allowCredentials: true
+
