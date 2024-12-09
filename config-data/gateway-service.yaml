@@ -1,14 +1,13 @@
 server:
   port: 8055
-  
 eureka:
   client:
     fetch-registry: true
     register-with-eureka: true
     service-url:
-      defaultZone: http://eureka-service.default.svc.cluster.local:8761/eureka
+      defaultZone: http://eureka-service:8761/eureka
   instance:
-    hostname: "localhost"
+    hostname: gateway-service
 
 spring:
   cloud:
@@ -17,32 +16,16 @@ spring:
         locator:
           enabled: true
       routes:
-        - id: prestamo-service
-          uri: lb://prestamo-service
-          predicates:
-            - Path=/prestamo/**
         - id: registro-service
           uri: lb://registro-service
           predicates:
             - Path=/registro/**
-        - id: solicitud-service
-          uri: lb://solicitud-service
-          predicates:
-            - Path=/solicitud/**
-        - id: evaluacion-service
-          uri: lb://evaluacion-service
-          predicates:
-            - Path=/evaluacion/**
-        - id: seguimiento-service
-          uri: lb://seguimiento-service
-          predicates:
-            - Path=/seguimiento/**
 
       globalcors:
         cors-configurations:
           '[/**]':
-            allowedOrigins: 
-              - "http://mysql.default.svc.cluster.local:3306"
+            allowedOrigins:
+              - "*"
             allowedMethods:
               - GET
               - POST
