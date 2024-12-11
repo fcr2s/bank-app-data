@@ -35,5 +35,16 @@ spring:
 #          uri: http://seguimiento-service.default.svc.cluster.local:8080
 #          predicates:
 #            - Path=/seguimiento/**
-
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedMethods:
+              - GET
+              - POST
+              - PUT
+              - DELETE
+              - OPTIONS 
+            allowedHeaders:
+              - "*"
 
