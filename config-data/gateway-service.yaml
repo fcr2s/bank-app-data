@@ -15,6 +15,14 @@ spring:
       discovery:
         locator:
           enabled: true
+        default-filters:
+          - DedupeResponseHeader=Access-Control-Allow-Origin Access-Control-Allow-Credentials, RETAIN_UNIQUE
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOrigins: '*'
+            allowedMethods: "*"
+            allowedHeaders: "*"
       routes:
         - id: prestamo-service
           uri: http://prestamo-service.default.svc.cluster.local:8080
@@ -36,17 +44,5 @@ spring:
           uri: http://seguimiento-service.default.svc.cluster.local:8080
           predicates:
             - Path=/seguimiento/**
-      globalcors:
-        cors-configurations:
-          '[/**]':
-            allowedOrigins: "*"
-            allowedMethods:
-              - GET
-              - POST
-              - PUT
-              - DELETE
-              - OPTIONS 
-            allowedHeaders:
-              - "*"
 
 
