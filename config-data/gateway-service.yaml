@@ -34,6 +34,6 @@ spring:
 #        - id: seguimiento-service
 #          uri: http://seguimiento-service.default.svc.cluster.local:8080
 #          predicates:
-            - Path=/seguimiento/**
+#            - Path=/seguimiento/**
 
 
