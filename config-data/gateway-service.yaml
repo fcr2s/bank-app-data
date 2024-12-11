@@ -6,8 +6,6 @@ eureka:
     register-with-eureka: true
     service-url:
       defaultZone: http://eureka-service:8761/eureka
-  instance:
-    hostname: gateway-service
 
 spring:
   cloud:
@@ -15,34 +13,27 @@ spring:
       discovery:
         locator:
           enabled: true
-        default-filters:
-          - DedupeResponseHeader=Access-Control-Allow-Origin Access-Control-Allow-Credentials, RETAIN_UNIQUE
-      globalcors:
-        cors-configurations:
-          '[/**]':
-            allowedOrigins: '*'
-            allowedMethods: "*"
-            allowedHeaders: "*"
+          
       routes:
-        - id: prestamo-service
-          uri: http://prestamo-service.default.svc.cluster.local:8080
-          predicates:
-            - Path=/prestamo/**
+#        - id: prestamo-service
+#          uri: http://prestamo-service.default.svc.cluster.local:8080
+#          predicates:
+#            - Path=/prestamo/**
         - id: registro-service
-          uri: http://registro-service.default.svc.cluster.local:8080
+          uri: lb://registro-service
           predicates:
             - Path=/registro/**
-        - id: solicitud-service
-          uri: http://solicitud-service.default.svc.cluster.local:8080
-          predicates:
-            - Path=/solicitud/**
-        - id: evaluacion-service
-          uri: http://evaluacion-service.default.svc.cluster.local:8080
-          predicates:
-            - Path=/evaluacion/**
-        - id: seguimiento-service
-          uri: http://seguimiento-service.default.svc.cluster.local:8080
-          predicates:
+#        - id: solicitud-service
+#          uri: http://solicitud-service.default.svc.cluster.local:8080
+#          predicates:
+#            - Path=/solicitud/**
+#        - id: evaluacion-service
+#          uri: http://evaluacion-service.default.svc.cluster.local:8080
+#          predicates:
+#            - Path=/evaluacion/**
+#        - id: seguimiento-service
+#          uri: http://seguimiento-service.default.svc.cluster.local:8080
+#          predicates:
             - Path=/seguimiento/**
 
 
