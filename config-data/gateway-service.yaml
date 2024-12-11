@@ -15,26 +15,26 @@ spring:
           enabled: true
           
       routes:
-#        - id: prestamo-service
-#          uri: http://prestamo-service.default.svc.cluster.local:8080
-#          predicates:
-#            - Path=/prestamo/**
+        - id: prestamo-service
+          uri: lb://prestamo-service
+          predicates:
+            - Path=/prestamo/**
         - id: registro-service
           uri: lb://registro-service
           predicates:
             - Path=/registro/**
-#        - id: solicitud-service
-#          uri: http://solicitud-service.default.svc.cluster.local:8080
-#          predicates:
-#            - Path=/solicitud/**
-#        - id: evaluacion-service
-#          uri: http://evaluacion-service.default.svc.cluster.local:8080
-#          predicates:
-#            - Path=/evaluacion/**
-#        - id: seguimiento-service
-#          uri: http://seguimiento-service.default.svc.cluster.local:8080
-#          predicates:
-#            - Path=/seguimiento/**
+        - id: solicitud-service
+          uri: lb://solicitud-service
+          predicates:
+            - Path=/solicitud/**
+        - id: evaluacion-service
+          uri: lb://evaluacion-service
+          predicates:
+            - Path=/evaluacion/**
+        - id: seguimiento-service
+          uri: lb://seguimiento-service
+          predicates:
+            - Path=/seguimiento/**
       globalcors:
         cors-configurations:
           '[/**]':
